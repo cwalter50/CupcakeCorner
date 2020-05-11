@@ -36,7 +36,12 @@ class Order: ObservableObject, Codable {
     @Published var zip = ""
     
     var hasValidAddress: Bool {
-        if name.isEmpty || streetAddress.isEmpty || city.isEmpty || zip.isEmpty {
+        let theName = name.trimmingCharacters(in: .whitespacesAndNewlines)
+        let street = streetAddress.trimmingCharacters(in: .whitespacesAndNewlines)
+        let theCity = city.trimmingCharacters(in: .whitespacesAndNewlines)
+        let theZip = zip.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if theName.isEmpty || street.isEmpty || theCity.isEmpty || theZip.isEmpty {
             return false
         }
 
